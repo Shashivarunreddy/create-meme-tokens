@@ -14,10 +14,7 @@ export function TokenLaunchpad() {
     const [tokenImage, setTokenImage] = useState('');
     const [initialSupply, setInitialSupply] = useState(0);
 
-    const [liquidityAmount, setLiquidityAmount] = useState({
-        base: 0,
-        quote: 0,
-    });
+   
 
     async function createToken() {
         const mintKeypair = Keypair.generate();
@@ -93,18 +90,6 @@ export function TokenLaunchpad() {
         console.log("Minted!");
     }
 
-    const addLiquidity = async () => {
-        // Placeholder for adding liquidity logic
-        console.log("Adding liquidity...");
-        // Implement the actual liquidity addition logic here
-    };
-
-    const removeLiquidity = async () => {
-        // Placeholder for removing liquidity logic
-        console.log("Removing liquidity...");
-        // Implement the actual liquidity removal logic here
-    };
-
     return (
         <div style={{
             height: '100vh',
@@ -146,26 +131,7 @@ export function TokenLaunchpad() {
             /> <br />
             <button onClick={createToken} className='btn'>Create a Token</button>
 
-            {/* Liquidity Management Section */}
-            <div style={{ marginTop: '20px', textAlign: 'center' }}>
-                <h3>Manage Liquidity</h3>
-                <input
-                    type="number"
-                    placeholder="Base Amount (Your Token)"
-                    value={liquidityAmount.base}
-                    onChange={(e) => setLiquidityAmount({ ...liquidityAmount, base: parseFloat(e.target.value) })}
-                />
-                <input
-                    type="number"
-                    placeholder="Quote Amount (e.g., USDC)"
-                    value={liquidityAmount.quote}
-                    onChange={(e) => setLiquidityAmount({ ...liquidityAmount, quote: parseFloat(e.target.value) })}
-                />
-                <div>
-                    <button onClick={addLiquidity}>Add Liquidity</button>
-                    <button onClick={removeLiquidity}>Remove Liquidity</button>
-                </div>
-            </div>
+        
         </div>
     );
 }
